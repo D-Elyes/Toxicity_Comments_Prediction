@@ -32,7 +32,7 @@ object Main extends App {
     **/
   def createModel(spark: SparkSession): MultilayerPerceptronClassificationModel =
   {
-    val train = "Data/train.csv/train.csv"
+    val train = "train.csv"
     println("Loading data")
     val dfTrain = spark.read.option("header","true").option("inferSchema",true).csv(train)
     println("Preparing data")
@@ -78,7 +78,7 @@ object Main extends App {
   }
 
   def useModel()= {
-    val test = "Data/test.csv/test.csv"
+    val test = "test.csv"
     Logger.getLogger("org").setLevel(Level.ERROR) //Remove all the INFO prompt
     val spark = SparkSession.builder.appName("Comment Toxicity").config("spark.master", "local").getOrCreate() //Create spark session
 
